@@ -10,7 +10,9 @@ public class UITopTransparent : MonoBehaviour
     [Header("설정")]
     public Image targetImage;       // 효과를 줄 이미지
     //public KeyCode triggerKey = KeyCode.Space; // 누를 키
-    public float duration = 10f;   // 투명해지는 데 걸리는 시간
+    public float duration = 0.1f;   // 1프레임에 다시 채워지는 값
+
+    WaitForSeconds _wfs = new WaitForSeconds(0.1f);
 
     private Coroutine currentCoroutine;
 
@@ -84,12 +86,12 @@ public class UITopTransparent : MonoBehaviour
     IEnumerator RestoreRoutine()
     {
         // 이미지가 완전히 찰 때까지 반복
-        while (targetImage.fillAmount < 1f)
+        while (targetImage.fillAmount <= 1f)
         {
             Debug.Log(targetImage.fillAmount);
             // 현재 값에서 점점 더함
-            targetImage.fillAmount += Time.deltaTime / duration;
-            yield return null;
+            targetImage.fillAmount += duration;
+            yield return _wfs;
         }
 
         targetImage.fillAmount = 1f; // 확실하게 1로 고정

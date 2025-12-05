@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UITopTransparent
   targetImage: {fileID: 0}
-  duration: 1
+  duration: 0.01
 --- !u!114 &1977102384
 MonoBehaviour:
   m_ObjectHideFlags: 0
