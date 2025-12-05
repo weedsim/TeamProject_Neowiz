@@ -23,7 +23,7 @@ public class Meteor : MonoBehaviour
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance > 50f) // 거리가 일정 이상 멀어지면
             {
-                //반환 메소드
+                ReturnPool();
             }
         }
     }
@@ -38,5 +38,11 @@ public class Meteor : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            ReturnPool();
+        }
+    }
 }
