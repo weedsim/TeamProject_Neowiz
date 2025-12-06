@@ -6,18 +6,23 @@ using UnityEngine.InputSystem;
 
 public class UITopTransparent : MonoBehaviour
 {
+    [Header("Player")]
+    [SerializeField] private AddForce _player_OBJ = null; // 직접 플레이어 오브젝트 연결
 
     [Header("설정")]
     public Image targetImage;       // 효과를 줄 이미지
-    //public KeyCode triggerKey = KeyCode.Space; // 누를 키
-    public float duration = 0.1f;   // 1프레임에 다시 채워지는 값
+    //public float duration = 0.1f;   // 1프레임에 다시 채워지는 값
 
-    WaitForSeconds _wfs = new WaitForSeconds(0.1f);
+    [Header("Timer")]
+    public float _Sec = 0f;
+    public float _Min = 0f;
+    public float _Hour = 0f;
+    public string _StartTime;
 
-    private Coroutine currentCoroutine;
-
-    void Start()
+    private void Awake()
     {
+        _StartTime = System.DateTime.Now.ToString();
+
         // 안전장치: 이미지가 연결 안 되어 있으면 자기 자신의 컴포넌트를 가져옴
         if (targetImage == null)
             targetImage = GetComponent<Image>();
@@ -26,74 +31,47 @@ public class UITopTransparent : MonoBehaviour
         targetImage.type = Image.Type.Filled;
         targetImage.fillMethod = Image.FillMethod.Vertical;
         targetImage.fillOrigin = (int)Image.OriginVertical.Bottom;
-        targetImage.fillAmount = 1f; // 처음엔 다 보여야 함
+        //targetImage.fillAmount = 1f; // 처음엔 다 보여야 함
 
-        currentCoroutine = StartCoroutine(RestoreRoutine());
+        StartCoroutine(UpdateTimer_Co());
     }
 
-    //void Update()
-    //{
-    //    // 키를 눌렀을 때 실행
-    //    if (Input.GetKeyDown(triggerKey))
-    //    {
-    //        // 이미 실행 중인 코루틴이 있다면 멈추고 새로 시작
-    //        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-
-    //        currentCoroutine = StartCoroutine(FadeOutRoutine());
-    //    }
-    //    else
-    //    {
-    //        // 이미 실행 중인 코루틴이 있다면 멈추고 새로 시작
-    //        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-
-    //        currentCoroutine = StartCoroutine(RestoreRoutine());
-    //    }
-    //}
-
-    void OnMove(InputValue inputValue)
+    private void Update()
     {
-        Debug.Log("aa");
-        if (inputValue.isPressed)
-        {
-
-            FadeOut();
-
-            //// 이미 실행 중인 코루틴이 있다면 멈추고 새로 시작
-            //if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-
-            //currentCoroutine = StartCoroutine(RestoreRoutine());
-        }
+        UpdateGauge();
     }
 
-    IEnumerator FadeOutRoutine()
+    public void UpdateGauge()
     {
-        float fill = targetImage.fillAmount;
-        // 이미지가 완전히 사라질 때까지 반복
-        while (targetImage.fillAmount >= fill - 0.2f)
+        targetImage.fillAmount = _player_OBJ.CurrentGauge / _player_OBJ.MaxGauge;
+    }
+
+    public IEnumerator UpdateTimer_Co()
+    {
+        while (true)
         {
-            // 현재 값에서 점점 뺌 (부드럽게 이어지도록)
-            targetImage.fillAmount -= 0.01f;
+            _Sec += Time.deltaTime;
+
+            if(_Sec > 59)
+            {
+                _Sec -= 60;
+                _Min++;
+                if(_Min > 59)
+                {
+                    _Min -= 60;
+                    _Hour++;
+                }
+            }
+
+
+
+
+
             yield return null;
         }
     }
 
-    private void FadeOut()
-    {
-        targetImage.fillAmount -= 0.2f;
-    }
 
-    // --- 코루틴 2: 원래대로 복구됨 (FillAmount 0 -> 1) ---
-    IEnumerator RestoreRoutine()
-    {
-        // 이미지가 완전히 찰 때까지 반복
-        while (targetImage.fillAmount <= 1f)
-        {
-            Debug.Log(targetImage.fillAmount);
-            // 현재 값에서 점점 더함
-            targetImage.fillAmount += duration;
-            yield return _wfs;
-        }
 
-        targetImage.fillAmount = 1f; // 확실하게 1로 고정
-    }
+
 }
