@@ -1,87 +1,56 @@
 using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
 
-/// <summary>
-/// SpaceObjects 내 오브젝트를 3x3x3 루빅스 큐브 위치로 자동 배치하는 스크립트
-/// </summary>
-public class AutoRubiksPlacement : EditorWindow
+public class FillSlots : EditorWindow
 {
-    private static Dictionary<string, Vector3> placementMap;
+    Transform slotParent;
+    Transform sourceSlot;
 
-    [MenuItem("Tools/Auto Arrange/Rubiks Cube Placement")]
-    public static void ApplyRubiksPlacement()
+    [MenuItem("Tools/Fill All Slots")]
+    public static void ShowWindow()
     {
-        GameObject root = Selection.activeGameObject;
-
-        if (root == null)
-        {
-            Debug.LogError("SpaceObjects 를 선택하세요.");
-            return;
-        }
-
-        BuildPlacementMap();  // 좌표 매핑 생성
-
-        foreach (Transform child in root.GetComponentsInChildren<Transform>())
-        {
-            if (placementMap.ContainsKey(child.name))
-            {
-                Undo.RecordObject(child, "Rubiks Placement");
-                child.position = placementMap[child.name];
-                Debug.Log($"{child.name} → {child.position}");
-            }
-        }
-
-        Debug.Log("루빅스 큐브 자동 배치 완료!");
+        GetWindow<FillSlots>("Fill All Slots");
     }
 
-    /// <summary>
-    /// 이름 → 좌표 매칭 테이블 생성
-    /// </summary>
-    private static void BuildPlacementMap()
+    private void OnGUI()
     {
-        float D = 800f; // 간격
+        GUILayout.Label("Slot 자동 채우기", EditorStyles.boldLabel);
 
-        placementMap = new Dictionary<string, Vector3>()
+        slotParent = EditorGUILayout.ObjectField("Slot Parent (SpaceObjects)", slotParent, typeof(Transform), true) as Transform;
+        sourceSlot = EditorGUILayout.ObjectField("Source Slot (slot 0)", sourceSlot, typeof(Transform), true) as Transform;
+
+        if (GUILayout.Button("27개 슬롯 자동 구성"))
         {
-            // Z = +800 Layer
-            ["Scatter_4"] = new Vector3(-D, -D, D),
-            ["Scatter_1"] = new Vector3(0, -D, D),
-            ["Scatter_2"] = new Vector3(D, -D, D),
+            if (slotParent == null || sourceSlot == null)
+            {
+                Debug.LogError("slotParent 또는 sourceSlot이 설정되지 않음!");
+                return;
+            }
 
-            ["Scatter_5"] = new Vector3(-D, 0, D),
-            ["Scatter_3"] = new Vector3(0, 0, D),
-            ["SetPiece_1"] = new Vector3(D, 0, D),
+            for (int i = 0; i < slotParent.childCount; i++)
+            {
+                Transform slot = slotParent.GetChild(i);
 
-            ["SetPiece_3"] = new Vector3(-D, D, D),
-            ["Scatter_8"] = new Vector3(0, D, D),
-            ["SetPiece_5"] = new Vector3(D, D, D),
+                if (slot == sourceSlot)
+                    continue; // slot0은 건너뜀
 
-            // Z = 0 Layer
-            ["Scatter_6"] = new Vector3(-D, -D, 0),
-            ["Scatter_7"] = new Vector3(0, -D, 0),
-            ["SetPiece_2"] = new Vector3(D, -D, 0),
+                // slot 안 기존 내용 삭제
+                foreach (Transform child in slot)
+                    DestroyImmediate(child.gameObject);
 
-            ["Clusters1"] = new Vector3(-D, 0, 0),
-            // (0,0,0) intentionally empty
-            ["Clusters2"] = new Vector3(D, 0, 0),
+                // slot0의 자식들을 복제해서 넣기
+                foreach (Transform child in sourceSlot)
+                {
+                    Transform clone = Instantiate(child, slot);
+                    clone.localPosition = child.localPosition;
+                    clone.localRotation = child.localRotation;
+                    clone.localScale = child.localScale;
+                }
 
-            ["SetPiece_4"] = new Vector3(-D, D, 0),
-            ["Scatter_12"] = new Vector3(0, D, 0),
-            ["SetPiece_6"] = new Vector3(D, D, 0),
+                Debug.Log($"{slot.name} → 채움 완료!");
+            }
 
-            // Z = -800 Layer
-            ["Scatter_9"] = new Vector3(-D, -D, -D),
-            ["Scatter_10"] = new Vector3(0, -D, -D),
-            ["SetPieces3_1"] = new Vector3(D, -D, -D),
-
-            ["Scatter_11"] = new Vector3(-D, 0, -D),
-            ["SetPieces3_2"] = new Vector3(0, 0, -D),
-            ["SetPieces3_3"] = new Vector3(D, 0, -D),
-
-            ["SetPieces4_3"] = new Vector3(-D, D, -D),
-            ["SetPieces4_6"] = new Vector3(0, D, -D),
-            ["SetPieces4_5"] = new Vector3(D, D, -D)
-        };
+            Debug.Log("모든 슬롯 채우기 완료!");
+        }
     }
 }
