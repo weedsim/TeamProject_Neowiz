@@ -8,7 +8,7 @@ public class ItemSpawner : MonoBehaviour
 
     private IObjectPool<GameObject> iPool;
     private float timer;
-    //딕셔너리 안써서 2개 만들어야 함
+    //딕셔너리 쓰면 1개만 만들어도됨
     private void Awake()
     {
         //풀초기화
@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour
     {
         GameObject item = iPool.Get();
 
-        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);//주변에서 생성
+        Vector3 randomPos = player.position; //+ (Random.insideUnitSphere * 20f);//주변에서 생성
         item.transform.position = randomPos;
     }
 }
