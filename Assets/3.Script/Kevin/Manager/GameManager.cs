@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+
+    #region Singleton
     public static GameManager Instance = null;
 
     private void Awake()
@@ -17,16 +19,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 
     public UITopTransparent _TargetEffect;
 
     public WaitForSeconds _WFS = new WaitForSeconds(0.1f);
+
+    public float _Time = 0f;
+    public string _StartTime;
+
 
     private void Start()
     {
         StartCoroutine(FazingTransparent());
     }
 
+    /// <summary>
+    /// 게임 플레이 씬으로 넘어가면 실행
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator FazingTransparent()
     {
         while (true)
