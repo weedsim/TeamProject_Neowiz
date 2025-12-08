@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 
 public class AddForce : MonoBehaviour
 {
@@ -16,11 +14,14 @@ public class AddForce : MonoBehaviour
     public float FartCost = 20f;
     public float FartRegenSpeed = 1f;
     public float FartRegenGauge = 2f;
+    public ParticleSystem fartEffect; 
 
     private new Rigidbody rigidbody;
     private bool farting = false;
     private Vector3 targetDirection;
-    private bool isfarting = false;
+
+    private bool isBoosting = false;
+    private bool isFilling = false;  
 
     private void Awake()
     {
@@ -34,21 +35,28 @@ public class AddForce : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        if (isfarting) return;
-        Mathf.Clamp(CurrentGauge, 0, MaxGauge);
-        CurrentGauge -= FartCost;
-        if (CurrentGauge <= 0f) // 안전장치
-        {
-            CurrentGauge = 0f;
-        }
-        isfarting = true;
-        rigidbody.linearVelocity = Vector3.zero;
-        StartCoroutine(Boostfarting_co());
-        farting = value.isPressed;
+        if (isBoosting) return;
 
-        if (farting)
+        if (value.isPressed)
         {
+            if (CurrentGauge < FartCost) return;
+
+            CurrentGauge -= FartCost;
+            CurrentGauge = Mathf.Clamp(CurrentGauge, 0, MaxGauge);
+
+            isBoosting = true;
+            rigidbody.linearVelocity = Vector3.zero;
+
+            fartEffect.Play(); 
+
+            StartCoroutine(Boostfarting_co());
+
             targetDirection = PlayCam.transform.forward;
+            farting = true;
+        }
+        else
+        {
+            farting = false;
         }
     }
 
@@ -58,35 +66,45 @@ public class AddForce : MonoBehaviour
         {
             rigidbody.AddForce(targetDirection * Force, ForceMode.Force);
         }
-        if (CurrentGauge < MaxGauge)
+
+        if (CurrentGauge < MaxGauge && !isFilling)
         {
             StartCoroutine(FillFartGauge_co());
         }
         else if (CurrentGauge >= MaxGauge)
         {
             StopCoroutine(FillFartGauge_co());
+            isFilling = false; 
         }
     }
+
     private IEnumerator Boostfarting_co()
     {
         Vector3 DDong = transform.forward;
         rigidbody.linearVelocity = transform.forward * Boostfarting_Speed;
-        yield return FartingCooltime;
+
+        yield return FartingCooltime; 
+
         while (rigidbody.linearVelocity.magnitude >= Force)
         {
             rigidbody.linearVelocity -= DDong;
             yield return null;
         }
-        isfarting = false;
+
+        isBoosting = false;
     }
 
     private IEnumerator FillFartGauge_co()
     {
-        while (true)
+        isFilling = true; 
+
+        while (CurrentGauge < MaxGauge)
         {
-            if (CurrentGauge >= MaxGauge) break;
-            CurrentGauge += FartRegenGauge;
             yield return new WaitForSeconds(FartRegenSpeed);
+            CurrentGauge += FartRegenGauge;
+            CurrentGauge = Mathf.Clamp(CurrentGauge, 0, MaxGauge);
         }
+
+        isFilling = false; 
     }
 }

@@ -1,0 +1,154 @@
+{
+  "m_Shader": {
+    "m_FileID": 2,
+    "m_PathID": 1377460836001071272,
+    "Name": "Re0/CelRendering_SelfShadow",
+    "IsNull": false
+  },
+  "m_SavedProperties": {
+    "m_TexEnvs": {
+      "_LightMap": {
+        "m_Texture": {
+          "m_FileID": 3,
+          "m_PathID": -8762549794075571126,
+          "Name": "ram2",
+          "IsNull": false
+        },
+        "m_Scale": {
+          "X": 1.0,
+          "Y": 1.0
+        },
+        "m_Offset": {
+          "X": 0.0,
+          "Y": 0.0
+        }
+      },
+      "_MainTex": {
+        "m_Texture": {
+          "m_FileID": 3,
+          "m_PathID": 8068747749363091798,
+          "Name": "ram1",
+          "IsNull": false
+        },
+        "m_Scale": {
+          "X": 1.0,
+          "Y": 1.0
+        },
+        "m_Offset": {
+          "X": 0.0,
+          "Y": 0.0
+        }
+      },
+      "_RampTexture": {
+        "m_Texture": {
+          "m_FileID": 4,
+          "m_PathID": 6705758001693507938,
+          "Name": "ramp",
+          "IsNull": false
+        },
+        "m_Scale": {
+          "X": 1.0,
+          "Y": 1.0
+        },
+        "m_Offset": {
+          "X": 0.0,
+          "Y": 0.0
+        }
+      },
+      "_ShadowMask": {
+        "m_Texture": {
+          "m_FileID": 0,
+          "m_PathID": 4383243181182887639,
+          "Name": "ram3",
+          "IsNull": false
+        },
+        "m_Scale": {
+          "X": 1.0,
+          "Y": 1.0
+        },
+        "m_Offset": {
+          "X": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    "m_Ints": null,
+    "m_Floats": {
+      "DISSOLVE": 0.0,
+      "TESTALPHA": 0.0,
+      "_BumpScale": 1.0,
+      "_Cutoff": 0.5,
+      "_DetailNormalMapScale": 1.0,
+      "_DisolveEmissionScale": 24.0,
+      "_DisolveInOut": 0.0,
+      "_DisolveThreshold": 0.0,
+      "_DstBlend": 0.0,
+      "_EmissiveScale": 1.0,
+      "_Gloss": 20.0,
+      "_GlossMapScale": 1.0,
+      "_GlossSmooth": 0.001,
+      "_Glossiness": 0.5,
+      "_GlossyReflections": 1.0,
+      "_Metallic": 0.0,
+      "_Mode": 0.0,
+      "_OcclusionStrength": 1.0,
+      "_Outline": 0.001,
+      "_Parallax": 0.02,
+      "_RimSmooth": 0.1,
+      "_RimThreshold": 0.7,
+      "_ShadowContrast": -0.03,
+      "_ShadowStrenth": 1.0,
+      "_SmoothnessTextureChannel": 0.0,
+      "_SpecularHighlights": 1.0,
+      "_SrcBlend": 1.0,
+      "_UVSec": 0.0,
+      "_ZWrite": 1.0
+    },
+    "m_Colors": {
+      "_Color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "_DisolveEmission": {
+        "r": 1.0,
+        "g": 0.39705884,
+        "b": 0.6493793,
+        "a": 1.0
+      },
+      "_EmissionColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "_EmissiveColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "_OutlineColor": {
+        "r": 0.8196079,
+        "g": 0.6313726,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "_RimColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "_SpecularColor": {
+        "r": 0.54509807,
+        "g": 0.54509807,
+        "b": 0.54509807,
+        "a": 1.0
+      }
+    }
+  },
+  "m_Name": "ram_show",
+  "Name": "ram_show"
+}
