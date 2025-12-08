@@ -138,10 +138,11 @@ public class AddForce : MonoBehaviour
         girlSkillUI.StartCooldown(60f); // 60초 쿨타임
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(other.gameObject.name);
-        if(other.gameObject.layer == _layerToDie)
+        Debug.Log(collision.gameObject.layer);
+        if(collision.gameObject.layer == 7)
         {
             Debug.Log("충돌로 인한 게임 오버");
             GameManager.Instance.GameOver();

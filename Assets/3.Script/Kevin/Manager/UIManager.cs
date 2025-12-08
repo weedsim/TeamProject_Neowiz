@@ -239,6 +239,13 @@ public class UIManager : MonoBehaviour
     {
         _GameOver_Canvas.gameObject.SetActive(true);
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Camera.main.transform.parent = transform.parent;
+        player.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
     /// <summary>
@@ -248,6 +255,8 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.EnterPlayerName(_GameOver_Canvas.GetComponentInChildren<InputField>().text);
 
+
+        GameManager.Instance._Time = 0f;
     }
 
     /// <summary>
