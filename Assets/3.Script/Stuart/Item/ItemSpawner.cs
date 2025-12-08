@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour
     {
         GameObject item = iPool.Get();
 
-        Vector3 randomPos = player.position; //+ (Random.insideUnitSphere * 20f);//林函俊辑 积己
+        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);//林函俊辑 积己
         item.transform.position = randomPos;
     }
 }
