@@ -3,22 +3,29 @@ using System.Collections;
 
 public class PlayerSkill : MonoBehaviour
 {
-    private bool isSkill = false; // ÄðÅ¸ÀÓ
-    public bool GilrSkill = false; // ÄðÅ¸ÀÓ
-    private WaitForSeconds Coooltime = new WaitForSeconds(60f); // Ä³½Ì ¤»¤»
-    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); // Ä³½Ì ¤»¤»
-    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); // Ä³½Ì ¤»¤»
+    private bool isSkill = false; 
+    public bool GilrSkill = false; 
+    private WaitForSeconds Coooltime = new WaitForSeconds(60f); 
+    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); 
+    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); 
     private AddForce addForce;
     private GameManager gameManager = GameManager.Instance;
-    
+    private AudioClip _10Bird;
+    private AudioClip gilrclip;
+    private AudioClip boyclip;
+    private AudioSource audioSource;
+
+
 
     private void Awake()
     {
         TryGetComponent(out addForce);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void GoSkill()
     {
+        audioSource.PlayOneShot(_10Bird);
         int GoSkillNum = Random.Range(1, 4);
 
         switch (GoSkillNum)
@@ -36,13 +43,12 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    public SkillEffectManager effectManager; // ½ºÅ³ ÀÌÆåÆ® ¿¬°á
+    public SkillEffectManager effectManager; 
 
     private IEnumerator CoolTime_co()
     {
         isSkill = true;
 
-        // ÀÌÆåÆ® Á¾·á ½ÅÈ£ º¸³»±â
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillStart();
@@ -51,7 +57,6 @@ public class PlayerSkill : MonoBehaviour
         yield return Coooltime;
         isSkill = false;
 
-        // ÀÌÆåÆ® Á¾·á ½ÅÈ£ º¸³»±â
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillEnd();
@@ -64,10 +69,12 @@ public class PlayerSkill : MonoBehaviour
         addForce.FartCost = 0f;
         yield return BoySkilltime;
         addForce.FartCost = 20f;
+        audioSource.PlayOneShot(boyclip);
     }
 
     private IEnumerator GirlSkill_co()
     {
+        audioSource.PlayOneShot(gilrclip);
         GilrSkill = true;
         yield return GilrSkilltime;
         GilrSkill = false;
