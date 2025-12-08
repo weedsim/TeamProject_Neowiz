@@ -21,11 +21,14 @@ public class AddForce : MonoBehaviour
     private Vector3 targetDirection;
 
     private bool isBoosting = false;
-    private bool isFilling = false;  
+    private bool isFilling = false;
+
+    public SkillCooldownUI girlSkillUI;//스킬쿨타임
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        OnGirlSkill();
     }
 
     private void OnEnable()
@@ -107,4 +110,11 @@ public class AddForce : MonoBehaviour
 
         isFilling = false; 
     }
+
+    //스킬 쿨타임
+    void OnGirlSkill() 
+    {
+        girlSkillUI.StartCooldown(60f); // 60초 쿨타임
+    }
+
 }

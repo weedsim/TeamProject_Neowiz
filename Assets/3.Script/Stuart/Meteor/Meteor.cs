@@ -42,7 +42,17 @@ public class Meteor : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+
+
+            if (GameManager.Instance != null)
+            {
+              //  GameManager.Instance.GameOver();
+            }
             ReturnPool();
         }
     }
+
+
+
+
 }
