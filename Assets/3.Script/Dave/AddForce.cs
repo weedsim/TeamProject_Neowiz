@@ -112,7 +112,7 @@ public class AddForce : MonoBehaviour
     }
 
     //스킬 쿨타임
-    private void OnGirlSkill() 
+    void OnGirlSkill() 
     {
         girlSkillUI.StartCooldown(60f); // 60초 쿨타임
     }
