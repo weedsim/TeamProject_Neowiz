@@ -8,9 +8,16 @@ public enum ItemType
 }
 public class Item : MonoBehaviour
 {
+
+    private AddForce addForce;
     public ItemType type;
     private IObjectPool<GameObject> iPool;
 
+
+    private void Awake()
+    {
+        addForce = FindAnyObjectByType<AddForce>();
+    }
     public void Setup(IObjectPool<GameObject> pool)
     {
         iPool = pool;
@@ -21,7 +28,6 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       
         if (other.CompareTag("Player"))
         {
             //먹었을 때 효과발동이랑 반납
@@ -36,8 +42,9 @@ public class Item : MonoBehaviour
     {
         if (type == ItemType.sweetPotato)
         {
-            //플레이어에서 이속부스터 가져오기 (대한님)
+            addForce.CurrentGauge += 50;
         }
+
         else if (type == ItemType.Tissue)
         {
             //화면 하나씩 지우기
