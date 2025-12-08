@@ -4,12 +4,12 @@ using System.Collections;
 public class SkillEffectManager : MonoBehaviour
 {
     [Header("Overlay Skill Effect")]
-    public CanvasGroup overlay;   // 테두리 오버레이 이미지 (CanvasGroup)
+    public CanvasGroup overlay;   
 
     private bool isRunning = false;
 
     // =============================
-    //  스킬 시작
+    //  skill start
     // =============================
     public void OnSkillStart()
     {
@@ -21,7 +21,7 @@ public class SkillEffectManager : MonoBehaviour
     }
 
     // =============================
-    //  스킬 종료
+    //  skill end
     // =============================
     public void OnSkillEnd()
     {
@@ -32,13 +32,12 @@ public class SkillEffectManager : MonoBehaviour
     }
 
     // =============================
-    //  Overlay 테두리 깜빡임
+    //  Overlay frame ggambackggamback
     // =============================
     private IEnumerator OverlayEffect()
     {
         while (isRunning)
-        {
-            // 부드러운 진동/깜빡임 효과
+        {            
             if (overlay != null)
                 overlay.alpha = Mathf.PingPong(Time.time * 1.2f, 0.4f);
 
