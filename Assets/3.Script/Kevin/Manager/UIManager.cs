@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance._TargetEffect = this;
+
         // 안전장치: 이미지가 연결 되어 있으면 이미지 설정
         if (_TargetImage != null)
         {

@@ -11,6 +11,7 @@ public class ItemSpawner : MonoBehaviour
     //��ųʸ� ���� 1���� ������
     private void Awake()
     {
+
         //Ǯ�ʱ�ȭ
 
         iPool = new ObjectPool<GameObject>(createFunc: () => { GameObject item = Instantiate(itemPrefab);
@@ -21,6 +22,12 @@ public class ItemSpawner : MonoBehaviour
         actionOnRelease : (item) => item.SetActive(false), 
         actionOnDestroy: (item) => Destroy(item), maxSize: 20) ;  
     }//�ϴ� ����Ƽ Ǯ �̿��غ����� ���µ� �� ��Ʊ���
+
+    private void Start()
+    {
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     private void Update()
     {
         timer += Time.deltaTime;
