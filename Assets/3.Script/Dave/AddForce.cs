@@ -28,7 +28,7 @@ public class AddForce : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        OnGirlSkill();
+        //OnGirlSkill();
     }
 
     private void OnEnable()

@@ -15,7 +15,7 @@ public class PlayerSkill : MonoBehaviour
         // 이펙트 종료 신호 보내기
         if (effectManager != null && GameManager.Instance != null)
         {
-            effectManager.OnSkillStart(GameManager.Instance._ChooseCharacter);
+            effectManager.OnSkillStart();
         }           
 
         yield return Coooltime;
@@ -24,7 +24,7 @@ public class PlayerSkill : MonoBehaviour
         // 이펙트 종료 신호 보내기
         if (effectManager != null && GameManager.Instance != null)
         {
-            effectManager.OnSkillEnd(GameManager.Instance._ChooseCharacter);
+            effectManager.OnSkillEnd();
         }
             
     }
