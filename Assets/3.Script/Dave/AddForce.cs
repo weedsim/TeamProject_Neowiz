@@ -19,6 +19,7 @@ public class AddForce : MonoBehaviour
     private new Rigidbody rigidbody;
     [SerializeField] private bool farting = false;
     [SerializeField] private Vector3 targetDirection;
+    [SerializeField] private LayerMask _layerToDie;
 
     [SerializeField] private bool isBoosting = false;
     [SerializeField] private bool isFilling = false;
@@ -69,7 +70,20 @@ public class AddForce : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if(transform.position.x > 1600 || transform.position.x < -1600)
+        {
+            transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.y > 1600 || transform.position.y < -1600)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
+        }
+
+        if (transform.position.z > 1600 || transform.position.z < -1600)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * -1);
+        }
 
         if (farting)
         {
@@ -122,6 +136,16 @@ public class AddForce : MonoBehaviour
     void OnGirlSkill() 
     {
         girlSkillUI.StartCooldown(60f); // 60초 쿨타임
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.layer == _layerToDie)
+        {
+            Debug.Log("충돌로 인한 게임 오버");
+            GameManager.Instance.GameOver();
+        }
     }
 
 }

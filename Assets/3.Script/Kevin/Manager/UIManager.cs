@@ -35,6 +35,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _go_OBJ;
     [SerializeField] private Transform _characterPosition;
 
+    [Header("Skill CoolTime Image")]
+    public Image _SkillCool_IMG;
+    public Image _SkillCool_Background_IMG;
+
+    public Sprite _BoySkillIcon;
+    public Sprite _GirlSkillIcon;
+    public Sprite _GoSkillIcon;
 
     private void Awake()
     {
@@ -59,14 +66,20 @@ public class UIManager : MonoBehaviour
             {
                 case "Boy":
                     playerOBJ = Instantiate(_boy_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    _SkillCool_IMG.sprite = _BoySkillIcon;
+                    _SkillCool_Background_IMG.sprite = _BoySkillIcon;
                     break;
 
                 case "Girl":
                     playerOBJ = Instantiate(_girl_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    _SkillCool_IMG.sprite = _GirlSkillIcon;
+                    _SkillCool_Background_IMG.sprite = _GirlSkillIcon;
                     break;
 
                 case "Go":
                     playerOBJ = Instantiate(_go_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    _SkillCool_IMG.sprite = _GoSkillIcon;
+                    _SkillCool_Background_IMG.sprite = _GoSkillIcon;
                     break;
 
                 default:
@@ -174,9 +187,10 @@ public class UIManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator UpdateSkillColl_Co()
     {
-        while (_player_OBJ)
+        _SkillCool_IMG.fillAmount = 0;
+        while (_SkillCool_IMG.fillAmount < 1f)
         {
-
+            _SkillCool_IMG.fillAmount += Time.deltaTime / 60f;
 
             yield return null;
         }
