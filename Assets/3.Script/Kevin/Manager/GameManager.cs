@@ -21,13 +21,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public UITopTransparent _TargetEffect;
+    public UIManager _TargetEffect;
 
     public WaitForSeconds _WFS = new WaitForSeconds(0.1f);
 
     public float _Time = 0f;
     public string _StartTime;
 
+    [Header("Choosen Character Name")]
+    public string _ChooseCharacter;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// °ÔÀÓ ÇÃ·¹ÀÌ ¾ÀÀ¸·Î ³Ñ¾î°¡¸é ½ÇÇà
+    /// 
     /// </summary>
     /// <returns></returns>
     public IEnumerator FazingTransparent()
@@ -52,9 +54,21 @@ public class GameManager : MonoBehaviour
     {
         if(_TargetEffect != null)
         {
-            //_TargetEffect.SetTransparencyRange(inputValue);
+            
         }
     }
+
+    /// <summary>
+    /// í”Œë ˆì´ì–´ ì‚¬ë§ ì‹œ í˜¸ì¶œ
+    /// ë­í‚¹ì— ì¶”ê°€
+    /// </summary>
+    public void PlayerDie()
+    {
+        RankDataManager.Instance.AddRank();
+    }
+
+
+    
 
 
 }

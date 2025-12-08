@@ -130,8 +130,8 @@ GameObject:
   - component: {fileID: 383702681}
   - component: {fileID: 383702680}
   - component: {fileID: 383702682}
-  - component: {fileID: 383702683}
   - component: {fileID: 383702685}
+  - component: {fileID: 383702686}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -154,6 +154,7 @@ MonoBehaviour:
   _TargetEffect: {fileID: 0}
   _Time: 0
   _StartTime: 
+  _ChooseCharacter: 
 --- !u!4 &383702681
 Transform:
   m_ObjectHideFlags: 0
@@ -186,24 +187,6 @@ MonoBehaviour:
   _currentDate: 
   _playerName: Tester
   _surviveTime: 0
---- !u!114 &383702683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383702679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef86cfc4656df544a8e9cc6236637c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UITopTransparent
-  _player_OBJ: {fileID: 0}
-  _TargetImage: {fileID: 0}
-  _TimerText: {fileID: 0}
-  _Sec: 0
-  _Min: 0
-  _Hour: 0
 --- !u!114 &383702685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +199,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d55e17831341b84fb65ff2eaf20f75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DonDestroyThisOnLoad
+--- !u!114 &383702686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383702679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9fee28411bc58469b034a0698199b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  _player_OBJ: {fileID: 0}
+  _TargetImage: {fileID: 0}
+  _TimerText: {fileID: 0}
+  _Sec: 0
+  _Min: 0
+  _Hour: 0
 --- !u!1 &849529516
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1715020518
 MonoBehaviour:
@@ -529,6 +530,7 @@ MonoBehaviour:
   FartCost: 20
   FartRegenSpeed: 1
   FartRegenGauge: 2
+  fartEffect: {fileID: 0}
 --- !u!136 &1715020521
 CapsuleCollider:
   m_ObjectHideFlags: 0
