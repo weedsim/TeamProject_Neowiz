@@ -37,6 +37,7 @@ public class Item : MonoBehaviour
         if (type == ItemType.sweetPotato)
         {
             //플레이어에서 이속부스터 가져오기 (대한님)
+            
         }
         else if (type == ItemType.Tissue)
         {
