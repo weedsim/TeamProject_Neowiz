@@ -42,4 +42,20 @@ public class DDongInEye : MonoBehaviour
         isCute = isOn;
     }
     //아이템으로 지우는 거 추가해야됨
+    public void CleanScreen()
+    {
+        if (stain_List.Count > 0)
+        {
+            //걍 리스트 마지막부터 하는 거 최적화 국룰이랍니다
+            int lastIndex = stain_List.Count - 1;
+            GameObject targetPoop = stain_List[lastIndex];
+
+            Destroy(targetPoop);
+            stain_List.RemoveAt(lastIndex);
+        }
+        else
+        {
+            Debug.Log("닦을 똥이 없다네 (*)");
+        }
+    }
 }

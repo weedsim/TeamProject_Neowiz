@@ -21,10 +21,16 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+       
+        if (other.CompareTag("Player"))
         {
             //먹었을 때 효과발동이랑 반납
+           
+            EatEffect(other.gameObject);
+
+            ReturnItem();
         }
+        
     }
     private void EatEffect(GameObject player)
     {
@@ -35,6 +41,14 @@ public class Item : MonoBehaviour
         else if (type == ItemType.Tissue)
         {
             //화면 하나씩 지우기
+            DDongInEye clean = FindAnyObjectByType<DDongInEye>();
+            if(clean != null)
+            {
+            Debug.Log("똥 퍼가겠심더~");
+            clean.CleanScreen();
+
+            }
+            
         }
     }
     public void ReturnItem()
