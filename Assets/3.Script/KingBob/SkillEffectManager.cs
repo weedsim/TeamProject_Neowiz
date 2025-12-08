@@ -3,16 +3,13 @@ using System.Collections;
 
 public class SkillEffectManager : MonoBehaviour
 {
-    [Header("Common Skill Effect")]
-    public CanvasGroup overlay;   // 테두리 오버레이 (캔버스 내 Image)
-    public GameObject aura;       // 캐릭터 Glow 효과
-    public Transform cam;         // 카메라
-    public bool useCameraShake = true;
+    [Header("Overlay Skill Effect")]
+    public CanvasGroup overlay;   // 테두리 오버레이 이미지 (CanvasGroup)
 
     private bool isRunning = false;
 
     // =============================
-    //  스킬 시작 (공통 이펙트)
+    //  스킬 시작
     // =============================
     public void OnSkillStart()
     {
@@ -20,16 +17,7 @@ public class SkillEffectManager : MonoBehaviour
 
         isRunning = true;
 
-        if (aura != null)
-            aura.SetActive(true);
-
         StartCoroutine(OverlayEffect());
-
-        /*if (useCameraShake)
-        {
-            StartCoroutine(CameraShake());
-        }*/
-            
     }
 
     // =============================
@@ -39,14 +27,8 @@ public class SkillEffectManager : MonoBehaviour
     {
         isRunning = false;
 
-        if (aura != null)
-            aura.SetActive(false);
-
         if (overlay != null)
             overlay.alpha = 0;
-
-        if (cam != null)
-            cam.localPosition = Vector3.zero;
     }
 
     // =============================
@@ -56,31 +38,19 @@ public class SkillEffectManager : MonoBehaviour
     {
         while (isRunning)
         {
-            // 부드러운 깜빡임
-            overlay.alpha = Mathf.PingPong(Time.time * 1.2f, 0.4f);
+            // 부드러운 진동/깜빡임 효과
+            if (overlay != null)
+                overlay.alpha = Mathf.PingPong(Time.time * 1.2f, 0.4f);
+
             yield return null;
         }
 
-        overlay.alpha = 0;
+        if (overlay != null)
+            overlay.alpha = 0;
     }
 
-    // =============================
-    //  카메라 흔들림 (옵션)
-    // =============================
-    private IEnumerator CameraShake()
+    private void Start()
     {
-        Vector3 origin = cam.localPosition;
-        float duration = 0.25f;
-        float t = 0f;
-
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            cam.localPosition = origin +
-                (Vector3)Random.insideUnitCircle * 0.03f;
-            yield return null;
-        }
-
-        cam.localPosition = origin;
+        OnSkillStart();
     }
 }
