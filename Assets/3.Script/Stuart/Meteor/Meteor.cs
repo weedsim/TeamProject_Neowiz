@@ -7,7 +7,9 @@ public class Meteor : MonoBehaviour
 {
     private MeteorPool meteorPool;
     private Transform player;
+    private PlayerSkill playerSkill;
     public float speed = 10f;
+
 
     public void SetPool(MeteorPool pool, Transform playerTransform)
     {
@@ -40,13 +42,13 @@ public class Meteor : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-
+            if (playerSkill.GilrSkill) return;
 
             if (GameManager.Instance != null)
             {
-              //  GameManager.Instance.GameOver();
+                //  GameManager.Instance.GameOver();
             }
             ReturnPool();
         }
