@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerSkill : MonoBehaviour
 {
-    private bool isSkill = false; // 쿨타임
-    public bool GilrSkill = false; // 쿨타임
-    private WaitForSeconds Coooltime = new WaitForSeconds(60f); // 캐싱 ㅋㅋ
-    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); // 캐싱 ㅋㅋ
-    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); // 캐싱 ㅋㅋ
+    private bool isSkill = false; 
+    public bool GilrSkill = false; 
+    private WaitForSeconds Coooltime = new WaitForSeconds(60f); 
+    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); 
+    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f);
     private AddForce addForce;
     private GameManager gameManager = GameManager.Instance;
     
@@ -36,14 +36,13 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    public SkillEffectManager effectManager; // 스킬 이펙트 연결
+    public SkillEffectManager effectManager; 
 
     private IEnumerator CoolTime_co()
     {
         isSkill = true;
 
-        // 이펙트 종료 신호 보내기
-        if (effectManager != null && GameManager.Instance != null)
+         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillStart();
         }           
@@ -51,7 +50,6 @@ public class PlayerSkill : MonoBehaviour
         yield return Coooltime;
         isSkill = false;
 
-        // 이펙트 종료 신호 보내기
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillEnd();
