@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class UITopTransparent : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] private AddForce _player_OBJ = null; // 직접 플레이어 오브젝트 연결
+    [SerializeField] private AddForce _player_OBJ = null; // Player 태그를 가진 오브젝트에서 연결
 
     [Header("방귀 게이지 UI")]
     public Image _TargetImage;       // 효과를 줄 이미지
