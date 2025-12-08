@@ -8,7 +8,7 @@ public class DDongInEye : MonoBehaviour
     public GameObject poopUIPrefab;
     public Transform canvasTransform;
 
-    [Header("ÇøÀÎ°¡ ¾Æ´Ñ°¡")]
+    [Header("ï¿½ï¿½ï¿½Î°ï¿½ ï¿½Æ´Ñ°ï¿½")]
     public bool isCute = false;
     public Sprite realPoop;
     public Sprite cutePoop;
@@ -19,7 +19,7 @@ public class DDongInEye : MonoBehaviour
     {
         GameObject stain = Instantiate(poopUIPrefab, canvasTransform);
 
-        Image imgChange = stain.GetComponent<Image>(); // ÇøÀÎ°¡ ¾Æ´Ñ°¡!
+        Image imgChange = stain.GetComponent<Image>(); // ï¿½ï¿½ï¿½Î°ï¿½ ï¿½Æ´Ñ°ï¿½!
         if (isCute == true)
         {
             imgChange.sprite = cutePoop;
@@ -28,7 +28,7 @@ public class DDongInEye : MonoBehaviour
         {
             imgChange.sprite = realPoop;
         }
-        //È­¸é¿¡¼­ ·£´ýÇÏ°Ô ¹¯±â
+        //È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
         float x = Random.Range(-900f, 900f);
         float y = Random.Range(-500f, 500f);
         stain.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
@@ -41,12 +41,12 @@ public class DDongInEye : MonoBehaviour
     {
         isCute = isOn;
     }
-    //¾ÆÀÌÅÛÀ¸·Î Áö¿ì´Â °Å Ãß°¡ÇØ¾ßµÊ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ø¾ßµï¿½
     public void CleanScreen()
     {
         if (stain_List.Count > 0)
         {
-            //°Á ¸®½ºÆ® ¸¶Áö¸·ºÎÅÍ ÇÏ´Â °Å ÃÖÀûÈ­ ±¹·êÀÌ¶ø´Ï´Ù
+            //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½Ï´ï¿½
             int lastIndex = stain_List.Count - 1;
             GameObject targetPoop = stain_List[lastIndex];
 
@@ -55,7 +55,7 @@ public class DDongInEye : MonoBehaviour
         }
         else
         {
-            Debug.Log("´ÛÀ» ¶ËÀÌ ¾ø´Ù³× (*)");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù³ï¿½ (*)");
         }
     }
 }

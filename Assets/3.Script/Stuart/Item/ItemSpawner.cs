@@ -8,10 +8,10 @@ public class ItemSpawner : MonoBehaviour
 
     private IObjectPool<GameObject> iPool;
     private float timer;
-    //µñ¼Å³Ê¸® ¾²¸é 1°³¸¸ ¸¸µé¾îµµµÊ
+    //ï¿½ï¿½Å³Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½îµµï¿½ï¿½
     private void Awake()
     {
-        //Ç®ÃÊ±âÈ­
+        //Ç®ï¿½Ê±ï¿½È­
 
         iPool = new ObjectPool<GameObject>(createFunc: () => { GameObject item = Instantiate(itemPrefab);
             item.GetComponent<Item>().Setup(iPool);
@@ -20,11 +20,11 @@ public class ItemSpawner : MonoBehaviour
         actionOnGet: (Item) => Item.SetActive(true), 
         actionOnRelease : (item) => item.SetActive(false), 
         actionOnDestroy: (item) => Destroy(item), maxSize: 20) ;  
-    }//ÀÏ´Ü À¯´ÏÆ¼ Ç® ÀÌ¿ëÇØº¸·Á°í ›§´Âµ¥ ÇÙ ¾î·Æ±äÇÔ
+    }//ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ Ç® ï¿½Ì¿ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ ï¿½ï¿½Æ±ï¿½ï¿½ï¿½
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 5f) //½ºÆù ÃÊ½Ã°è
+        if(timer > 5f) //ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½Ã°ï¿½
         {
             timer = 0;
             SpawnItem();
@@ -34,7 +34,7 @@ public class ItemSpawner : MonoBehaviour
     {
         GameObject item = iPool.Get();
 
-        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);//ÁÖº¯¿¡¼­ »ý¼º
+        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);//ï¿½Öºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         item.transform.position = randomPos;
     }
 }

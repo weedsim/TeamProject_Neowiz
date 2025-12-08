@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class OptionPopup : MonoBehaviour
 {
-    [Header("연결스루")]
+    [Header("BGM Option")]
     public GameObject popupPanel;
     public Slider bgmSlider;
     public Toggle cuteMode;
 
-    [Header("스피커 19금")]
+    [Header("Resource")]
     public AudioSource bgmPlayer;
     public DDongInEye ddong;
 

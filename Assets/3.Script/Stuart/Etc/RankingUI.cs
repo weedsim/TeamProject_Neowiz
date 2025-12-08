@@ -13,9 +13,9 @@ public class RankingUI : MonoBehaviour
 
     public void SetData(int rank, string name, float score, string time)
     {
-        rankText.text = rank + "µî";
+        rankText.text = rank + "ï¿½ï¿½";
         nameText.text = name;
-        scoreText.text = score + "ÃÊ";
+        scoreText.text = score + "ï¿½ï¿½";
         timeText.text = time;
     }
 }

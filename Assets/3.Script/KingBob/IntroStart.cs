@@ -5,6 +5,6 @@ public class IntroStart : MonoBehaviour
 {
     public void GoNextScene()
     {
-        SceneManager.LoadScene("KingBob");   // ÀÌµ¿ÇÒ ¾À ÀÌ¸§
+        SceneManager.LoadScene("CharacterSelection");   // ìºë¦­í„° ì„ íƒ ì°½ìœ¼ë¡œ ì´ë™
     }
 }

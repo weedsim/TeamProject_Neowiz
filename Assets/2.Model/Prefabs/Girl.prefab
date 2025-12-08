@@ -59,6 +59,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 776428671058652731}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2784781477010525454}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2132504779412528588}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4060960477750819576}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6086109847820753462}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -901223138164584282}
   m_SourcePrefab: {fileID: 100100000, guid: 62ea435d0f9323b4f9142cdd8c3e1a63, type: 3}
 --- !u!1 &3158082134822646363 stripped
 GameObject:
@@ -88,3 +103,109 @@ CapsuleCollider:
   m_Height: 1.3
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &-2784781477010525454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158082134822646363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2592d08b9c21734dafabe75fa936cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSkill
+  GilrSkill: 0
+  effectManager: {fileID: 0}
+--- !u!114 &2132504779412528588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158082134822646363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a6e0c9832ceb94a809e5f9016b68a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddForce
+  PlayCam: {fileID: 0}
+  Force: 30
+  Boostfarting_Speed: 100
+  MaxGauge: 100
+  CurrentGauge: 0
+  FartCost: 20
+  FartRegenSpeed: 1
+  FartRegenGauge: 2
+  fartEffect: {fileID: 0}
+  girlSkillUI: {fileID: 0}
+--- !u!54 &4060960477750819576
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158082134822646363}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &-6086109847820753462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158082134822646363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &-901223138164584282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158082134822646363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01eec89e348d2a4d84cf3479dd165d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  MouseSensitivity: 0.5

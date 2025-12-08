@@ -29,39 +29,61 @@ public class UIManager : MonoBehaviour
     [Header("GameOver_Canvas")]
     public Canvas _GameOver_Canvas;
 
-    //private void Awake()
-    //{
-    //    CheckStartTime();
-    //    GameManager.Instance._Time = 0f;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _boy_OBJ;
+    [SerializeField] private GameObject _girl_OBJ;
+    [SerializeField] private GameObject _go_OBJ;
+    [SerializeField] private Transform _characterPosition;
 
-    //    if (_TargetImage == null)
-    //    {
-    //        GameObject.Find("FartGaugeIMG").TryGetComponent(out _TargetImage);
-    //    }
 
-    //    // 안전장치: 이미지가 연결 되어 있으면 이미지 설정
-    //    if (_TargetImage != null)
-    //    {
-    //        // 코드로 강제 설정 (실수 방지)
-    //        _TargetImage.type = Image.Type.Filled;
-    //        _TargetImage.fillMethod = Image.FillMethod.Vertical;
-    //        _TargetImage.fillOrigin = (int)Image.OriginVertical.Bottom;
-    //        //targetImage.fillAmount = 1f; // 처음엔 다 보여야 함
-    //    }
+    private void Awake()
+    {
+        // 안전장치: 이미지가 연결 되어 있으면 이미지 설정
+        if (_TargetImage != null)
+        {
+            // 코드로 강제 설정 (실수 방지)
+            _TargetImage.type = Image.Type.Filled;
+            _TargetImage.fillMethod = Image.FillMethod.Vertical;
+            _TargetImage.fillOrigin = (int)Image.OriginVertical.Bottom;
+            //targetImage.fillAmount = 1f; // 처음엔 다 보여야 함
+        }
 
-    //    if (_player_OBJ == null)
-    //    {
-    //        GameObject.FindGameObjectWithTag("Player").TryGetComponent(out _player_OBJ);
-    //    }
+        if (SceneManager.GetActiveScene().name.Equals("MainGame"))
+        {
+            // 초기화 
+            CheckStartTime();
+            GameObject playerOBJ;
+            switch (GameManager.Instance._ChooseCharacter)
+            {
+                case "Boy":
+                    playerOBJ = Instantiate(_boy_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    break;
 
-    //    if (_TimerText == null)
-    //    {
-    //        GameObject.Find("LivingTimer").TryGetComponent(out _TimerText);
-    //    }
+                case "Girl":
+                    playerOBJ = Instantiate(_girl_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    break;
 
-    //    StartCoroutine(UpdateTimer_Co());
-    //    StartCoroutine(UpdateGauge());
-    //}
+                case "Go":
+                    playerOBJ = Instantiate(_go_OBJ, _characterPosition.position, _characterPosition.rotation);
+                    break;
+
+                default:
+                    Debug.Log("없는 캐릭터를 요청하였습니다.");
+                    playerOBJ = null;
+                    break;
+            }
+
+            playerOBJ.TryGetComponent(out _player_OBJ);
+            PlayerSkill playerSkill;
+            playerOBJ.TryGetComponent(out playerSkill);
+            playerSkill.effectManager = GameObject.Find("skilleffect_tester").GetComponent<SkillEffectManager>();
+
+            Camera.main.transform.SetParent(playerOBJ.transform);
+            UpdateGauge();
+            UpdateTimer();
+        }
+
+    }
 
     /// <summary>
     /// 전투 씬 진입 시 호출 메서드(전투 시작 시각 저장용)
@@ -127,7 +149,10 @@ public class UIManager : MonoBehaviour
     public void SetTimer()
     {
         string timer = string.Format("{0} : {1:D2} : {2:D2}", _Hour, _Min, _Sec);
-        _TimerText.text = timer;
+        if (_TimerText != null)
+        {
+            _TimerText.text = timer;
+        }
     }
 
     /// <summary>

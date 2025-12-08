@@ -13,7 +13,7 @@ public class MeteorPool : MonoBehaviour
     {
         if (pool.Count > 0)
         {
-            int lastIndex = pool.Count - 1; //¸¶Áö¸·¿¡¼­¸¸ ÇØ¼­ Å·ÀûÈ­°¡ ÀßµÊ ¸®½ºÆ®·Î Áß°£ºÎÅÍ ²¨³»¿À¸é ´Ù ¹Ð¸®´Ï±î
+            int lastIndex = pool.Count - 1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ Å·ï¿½ï¿½È­ï¿½ï¿½ ï¿½ßµï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ð¸ï¿½ï¿½Ï±ï¿½
 
             GameObject obj = pool[lastIndex];
             pool.RemoveAt(lastIndex);

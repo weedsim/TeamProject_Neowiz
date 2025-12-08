@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        GameObject.Find("UIManager").GetComponent<UIManager>().CheckStartTime();
-        GameObject.Find("UIManager").GetComponent<UIManager>().UpdateTimer();
-    }
+    //private void Start()
+    //{
+    //    GameObject.Find("UIManager").GetComponent<UIManager>().CheckStartTime();
+    //    GameObject.Find("UIManager").GetComponent<UIManager>().UpdateTimer();
+    //}
 
 
 
@@ -84,7 +84,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         // UIManager에서 게임오버 시의 UI가 뜨게끔 하기
-        GameObject.Find("UIManager").GetComponent<UIManager>().OnGameOverUI();
+
+        _TargetEffect = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _TargetEffect.OnGameOverUI();
 
     }
 

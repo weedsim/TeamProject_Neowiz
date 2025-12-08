@@ -4,12 +4,12 @@ using System.Collections;
 public class SkillEffectManager : MonoBehaviour
 {
     [Header("Overlay Skill Effect")]
-    public CanvasGroup overlay;   // Å×µÎ¸® ¿À¹ö·¹ÀÌ ÀÌ¹ÌÁö (CanvasGroup)
+    public CanvasGroup overlay;   // ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ (CanvasGroup)
 
     private bool isRunning = false;
 
     // =============================
-    //  ½ºÅ³ ½ÃÀÛ
+    //  ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½
     // =============================
     public void OnSkillStart()
     {
@@ -21,7 +21,7 @@ public class SkillEffectManager : MonoBehaviour
     }
 
     // =============================
-    //  ½ºÅ³ Á¾·á
+    //  ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½
     // =============================
     public void OnSkillEnd()
     {
@@ -32,13 +32,13 @@ public class SkillEffectManager : MonoBehaviour
     }
 
     // =============================
-    //  Overlay Å×µÎ¸® ±ôºýÀÓ
+    //  Overlay ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     // =============================
     private IEnumerator OverlayEffect()
     {
         while (isRunning)
         {
-            // ºÎµå·¯¿î Áøµ¿/±ôºýÀÓ È¿°ú
+            // ï¿½Îµå·¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½
             if (overlay != null)
                 overlay.alpha = Mathf.PingPong(Time.time * 1.2f, 0.4f);
 

@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerSkill : MonoBehaviour
 {
-    private bool isSkill = false; // ÄğÅ¸ÀÓ
-    public bool GilrSkill = false; // ÄğÅ¸ÀÓ
-    private WaitForSeconds Coooltime = new WaitForSeconds(60f); // Ä³½Ì ¤»¤»
-    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); // Ä³½Ì ¤»¤»
-    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); // Ä³½Ì ¤»¤»
+    private bool isSkill = false; // ìŠ¤í‚¬ ì‚¬ìš©ìƒíƒœì¸ì§€
+    public bool GilrSkill = false; // Girl ìŠ¤í‚¬ ì‚¬ìš© ìƒíƒœì¸ì§€
+    private WaitForSeconds Coooltime = new WaitForSeconds(60f); // ìŠ¤í‚¬ ì¿¨íƒ€ì„
+    private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); // Girl ìŠ¤í‚¬ ì§€ì† ì‹œê°„
+    private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); // Boy ìŠ¤í‚¬ ì§€ì† ì‹œê°„
     private AddForce addForce;
     private GameManager gameManager = GameManager.Instance;
     
@@ -36,13 +36,13 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    public SkillEffectManager effectManager; // ½ºÅ³ ÀÌÆåÆ® ¿¬°á
+    public SkillEffectManager effectManager; // 
 
     private IEnumerator CoolTime_co()
     {
         isSkill = true;
 
-        // ÀÌÆåÆ® Á¾·á ½ÅÈ£ º¸³»±â
+        // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillStart();
@@ -51,7 +51,7 @@ public class PlayerSkill : MonoBehaviour
         yield return Coooltime;
         isSkill = false;
 
-        // ÀÌÆåÆ® Á¾·á ½ÅÈ£ º¸³»±â
+        // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillEnd();

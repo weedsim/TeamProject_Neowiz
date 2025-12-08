@@ -21,12 +21,12 @@ public class MeteorSpawner : MonoBehaviour
     }
     private void SpawnMeteor()
     {
-        GameObject meteor = poolManager.GetMeteor(); // ²¨³»ÀÕ
+        GameObject meteor = poolManager.GetMeteor(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        Vector3 spawnPos = player.position + (Random.onUnitSphere * 30f); //onUnitSphere = ±¸ Ç¥¸é¿¡¼­ ·£´ý »ý¼º
+        Vector3 spawnPos = player.position + (Random.onUnitSphere * 30f); //onUnitSphere = ï¿½ï¿½ Ç¥ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         meteor.transform.position = spawnPos;
-        meteor.transform.LookAt(player); //ÇÃ·¹ÀÌ¾î º¸±â
+        meteor.transform.LookAt(player); //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         meteor.GetComponent<Meteor>().SetPool(poolManager, player);
     }
 

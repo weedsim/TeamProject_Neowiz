@@ -25,7 +25,7 @@ public class FlyPoop : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            // È­¸é ¶Ë ¸Þ¼­µå
+            // È­ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
             FindAnyObjectByType<DDongInEye>().AddPoop();
 
             Destroy(gameObject);

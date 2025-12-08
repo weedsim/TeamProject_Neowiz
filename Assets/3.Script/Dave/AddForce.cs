@@ -17,11 +17,11 @@ public class AddForce : MonoBehaviour
     public ParticleSystem fartEffect; 
 
     private new Rigidbody rigidbody;
-    private bool farting = false;
-    private Vector3 targetDirection;
+    [SerializeField] private bool farting = false;
+    [SerializeField] private Vector3 targetDirection;
 
-    private bool isBoosting = false;
-    private bool isFilling = false;
+    [SerializeField] private bool isBoosting = false;
+    [SerializeField] private bool isFilling = false;
 
     public SkillCooldownUI girlSkillUI;//스킬쿨타임
 
@@ -33,6 +33,7 @@ public class AddForce : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayCam = Camera.main.gameObject;
         CurrentGauge = MaxGauge;
     }
 
@@ -50,7 +51,10 @@ public class AddForce : MonoBehaviour
             isBoosting = true;
             rigidbody.linearVelocity = Vector3.zero;
 
-            fartEffect.Play(); 
+            if(fartEffect != null)
+            {
+                fartEffect.Play(); 
+            }
 
             StartCoroutine(Boostfarting_co());
 
@@ -65,6 +69,8 @@ public class AddForce : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+
         if (farting)
         {
             rigidbody.AddForce(targetDirection * Force, ForceMode.Force);
@@ -83,14 +89,15 @@ public class AddForce : MonoBehaviour
 
     private IEnumerator Boostfarting_co()
     {
-        Vector3 DDong = transform.forward;
-        rigidbody.linearVelocity = transform.forward * Boostfarting_Speed;
+        Vector3 DDong = Camera.main.transform.forward;
+        rigidbody.linearVelocity = Camera.main.transform.forward * Boostfarting_Speed;
 
         yield return FartingCooltime; 
 
         while (rigidbody.linearVelocity.magnitude >= Force)
         {
             rigidbody.linearVelocity -= DDong;
+            Debug.Log(rigidbody.linearVelocity);
             yield return null;
         }
 

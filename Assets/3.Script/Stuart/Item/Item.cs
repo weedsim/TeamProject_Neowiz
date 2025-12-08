@@ -24,13 +24,13 @@ public class Item : MonoBehaviour
     }
     private void Update()
     {
-        transform.Rotate(Vector3.up * 90 * Time.deltaTime); //È¸ÀüÈ¸¿À¸®~
+        transform.Rotate(Vector3.up * 90 * Time.deltaTime); //È¸ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½~
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //¸Ô¾úÀ» ¶§ È¿°ú¹ßµ¿ÀÌ¶û ¹Ý³³
+            //ï¿½Ô¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ßµï¿½ï¿½Ì¶ï¿½ ï¿½Ý³ï¿½
            
             EatEffect(other.gameObject);
 
@@ -47,11 +47,11 @@ public class Item : MonoBehaviour
 
         else if (type == ItemType.Tissue)
         {
-            //È­¸é ÇÏ³ª¾¿ Áö¿ì±â
+            //È­ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
             DDongInEye clean = FindAnyObjectByType<DDongInEye>();
             if(clean != null)
             {
-            Debug.Log("¶Ë ÆÛ°¡°Ú½É´õ~");
+            Debug.Log("ï¿½ï¿½ ï¿½Û°ï¿½ï¿½Ú½É´ï¿½~");
             clean.CleanScreen();
 
             }

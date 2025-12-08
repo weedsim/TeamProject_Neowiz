@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RankingPopup : MonoBehaviour
 {
-    [Header("연결쓰")]
+    [Header("Ranking Panel")]
     public GameObject rankUIPrefab;
     public Transform content;
     public GameObject popupPanel;
@@ -24,6 +24,12 @@ public class RankingPopup : MonoBehaviour
         popupPanel.SetActive(false);
     }
 
+    public void GoToCharacterScene()
+    {
+        Debug.Log("ddd");
+        GameObject.Find("UIManager").GetComponent<UIManager>().GoToCharacterScene();
+    }
+
     private void ShowRank(List<RankData> dataList)
     {
         
@@ -32,10 +38,10 @@ public class RankingPopup : MonoBehaviour
             GameObject row = Instantiate(rankUIPrefab, content);
             RankingUI ui = row.GetComponent<RankingUI>();
 
-            ui.SetData(i + 1,                          // 등수
-                dataList[i].UserName,           // 이름
-                (float)dataList[i].SurvivalTime, // 시간 (형변환 필수!)
-                dataList[i].PlayDate            // 날짜
+            ui.SetData(i + 1,
+                dataList[i].UserName,
+                (float)dataList[i].SurvivalTime,
+                dataList[i].PlayDate
             );
         }
     }
