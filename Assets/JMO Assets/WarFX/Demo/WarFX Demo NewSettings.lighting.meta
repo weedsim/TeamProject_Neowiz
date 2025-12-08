@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/JMO Assets/WarFX/Demo/WarFX Demo NewSettings.lighting.meta
-guid: 1fe12ec5c0375204181fa0bcb80d536f
+guid: d6fa28e02ca83834b913fd40685b1a3c
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 4890085278179872738
-========
-guid: 278281f87b2f9604eb3447e25c3d0b48
-PrefabImporter:
-  externalObjects: {}
->>>>>>>> Kevin:Assets/2.Model/Prefabs/GameManager.prefab.meta
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
