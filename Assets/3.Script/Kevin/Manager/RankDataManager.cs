@@ -23,8 +23,8 @@ public class RankDataManager : MonoBehaviour
     [Header("Rank System Datas")]
     [SerializeField] private FullRankData _rankDatas;
     [SerializeField] private string _currentDate;
-    [SerializeField] private string _playerName;
     [SerializeField] private float _surviveTime;
+    public string _PlayerName;
 
     [Header("상위 100등까지만 저장")]
     [SerializeField] private const int _topRankCount = 100;
@@ -49,7 +49,7 @@ public class RankDataManager : MonoBehaviour
         _currentDate = GameManager.Instance._StartTime;
 
         // 랭킹 시스템에 추가할 데이터 생성
-        RankData newRankData = new RankData(_playerName, (double)_surviveTime, _currentDate);
+        RankData newRankData = new RankData(_PlayerName, (double)_surviveTime, _currentDate);
 
         // 랭킹 시스템 리스트에 추가
         _rankDatas.RankDatas.Add(newRankData);
@@ -77,6 +77,7 @@ public class RankDataManager : MonoBehaviour
     {
         return _rankDatas.RankDatas;
     }
+
 
 
 }

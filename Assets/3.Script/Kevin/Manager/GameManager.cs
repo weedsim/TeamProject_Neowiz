@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -28,34 +29,32 @@ public class GameManager : MonoBehaviour
     public float _Time = 0f;
     public string _StartTime;
 
+    [Header("혐인가 아닌가")]
+    public bool _IsCute = true;
+
     [Header("Choosen Character Name")]
     public string _ChooseCharacter;
 
+    [Header("죽었니 살았니")]
+    public bool _IsGameOver = false;
+
+
+
     private void Start()
     {
-        StartCoroutine(FazingTransparent());
+        GameObject.Find("UIManager").GetComponent<UIManager>().CheckStartTime();
+        GameObject.Find("UIManager").GetComponent<UIManager>().UpdateTimer();
     }
+
+
 
     /// <summary>
-    /// 
+    /// 플레이어 사망 후 랭킹에 등록 시 이름 지정
     /// </summary>
-    /// <returns></returns>
-    public IEnumerator FazingTransparent()
+    /// <param name="playerName"></param>
+    public void InitName(string playerName)
     {
-        while (true)
-        {
-            UpdateTrasparency(0.2f);
-
-            yield return _WFS;
-        }
-    }
-
-    public void UpdateTrasparency(float inputValue)
-    {
-        if(_TargetEffect != null)
-        {
-            
-        }
+        RankDataManager.Instance._PlayerName = playerName;
     }
 
     /// <summary>
@@ -68,7 +67,36 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void ToRankingScene()
+    {
+        SceneManager.LoadScene("RankingScene");
+    }
     
+
+    public void GameOver()
+    {
+        if (_IsGameOver)
+        {
+            return;
+        }
+
+        _IsGameOver = true;
+        Time.timeScale = 0f;
+
+        // UIManager에서 게임오버 시의 UI가 뜨게끔 하기
+        GameObject.Find("UIManager").GetComponent<UIManager>().OnGameOverUI();
+
+    }
+
+    /// <summary>
+    /// 랭킹에 쓰일 이름 등록
+    /// </summary>
+    /// <param name="playerName"></param>
+    public void EnterPlayerName(string playerName)
+    {
+        RankDataManager.Instance._PlayerName = playerName;
+        RankDataManager.Instance.AddRank();
+    }
 
 
 }
