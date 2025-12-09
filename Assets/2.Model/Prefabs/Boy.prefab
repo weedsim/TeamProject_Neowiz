@@ -130,6 +130,9 @@ MonoBehaviour:
   fartEffect: {fileID: 0}
   farting: 0
   targetDirection: {x: 0, y: 0, z: 0}
+  _layerToDie:
+    serializedVersion: 2
+    m_Bits: 128
   isBoosting: 0
   isFilling: 0
   girlSkillUI: {fileID: 0}
@@ -145,7 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2592d08b9c21734dafabe75fa936cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkill
+  isSkill: 0
   GilrSkill: 0
+  addForce: {fileID: 0}
   effectManager: {fileID: 0}
 --- !u!114 &-6897068176406007642
 MonoBehaviour:

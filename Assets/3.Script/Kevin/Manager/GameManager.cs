@@ -57,15 +57,6 @@ public class GameManager : MonoBehaviour
         RankDataManager.Instance._PlayerName = playerName;
     }
 
-    /// <summary>
-    /// 플레이어 사망 시 호출
-    /// 랭킹에 추가
-    /// </summary>
-    public void PlayerDie()
-    {
-        RankDataManager.Instance.AddRank();
-    }
-
 
     public void ToRankingScene()
     {

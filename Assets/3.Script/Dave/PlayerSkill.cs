@@ -3,13 +3,14 @@ using System.Collections;
 
 public class PlayerSkill : MonoBehaviour
 {
-    private bool isSkill = false; // 스킬 사용상태인지
+    [SerializeField] private bool isSkill = false; // 스킬 사용상태인지
     public bool GilrSkill = false; // Girl 스킬 사용 상태인지
     private WaitForSeconds Coooltime = new WaitForSeconds(60f); // 스킬 쿨타임
     private WaitForSeconds GilrSkilltime = new WaitForSeconds(10f); // Girl 스킬 지속 시간
     private WaitForSeconds BoySkilltime = new WaitForSeconds(15f); // Boy 스킬 지속 시간
-    private AddForce addForce;
+    [SerializeField] private AddForce addForce;
     private GameManager gameManager = GameManager.Instance;
+    private UIManager _uiManager = null;
     
 
     private void Awake()
@@ -41,6 +42,12 @@ public class PlayerSkill : MonoBehaviour
     private IEnumerator CoolTime_co()
     {
         isSkill = true;
+        
+        if(_uiManager == null)
+        {
+            GameObject.Find("UIManager").TryGetComponent(out _uiManager);
+        }
+        _uiManager.StartCoroutine(_uiManager.UpdateSkillColl_Co());
 
         // ����Ʈ ���� ��ȣ ������
         if (effectManager != null && GameManager.Instance != null)
@@ -76,6 +83,12 @@ public class PlayerSkill : MonoBehaviour
     private void OnClick()
     {
         if (isSkill) return;
+
+        Debug.Log("스킬 사용");
+        if(effectManager == null)
+        {
+            GameObject.Find("skilleffect_tester").TryGetComponent(out effectManager);
+        }
 
         switch (GameManager.Instance._ChooseCharacter)
         {
