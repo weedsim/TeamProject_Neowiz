@@ -67,7 +67,7 @@ public class DDongInEye : MonoBehaviour
         }
         else
         {
-            Debug.Log("���� ���� ���ٳ� (*)");
+            Debug.Log("지울 것이 없습니다");
         }
     }
 }

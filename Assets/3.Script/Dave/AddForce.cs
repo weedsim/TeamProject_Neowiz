@@ -118,7 +118,7 @@ public class AddForce : MonoBehaviour
         while (rigidbody.linearVelocity.magnitude >= Force)
         {
             rigidbody.linearVelocity -= DDong;
-            Debug.Log(rigidbody.linearVelocity);
+            //Debug.Log(rigidbody.linearVelocity);
             yield return null;
         }
 

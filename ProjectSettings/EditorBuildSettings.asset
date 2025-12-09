@@ -14,24 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/Main/MainGame.unity
     guid: ca50f59139894de469ce736a81612a32
-  - enabled: 1
-    path: Assets/1.Scene/RankingScene.unity
-    guid: aa883bc92896494428146e04cff74332
-  - enabled: 1
-    path: Assets/1.Scene/Sim/Test.unity
-    guid: 7ed0bf15d554b614d9e60de4c91e63d9
-  - enabled: 1
-    path: Assets/1.Scene/Dave.unity
-    guid: 2350d849cd02ebf49bd331554d5d7a04
-  - enabled: 1
-    path: Assets/1.Scene/KingBob.unity
-    guid: eee225d077f7a6c409d6ff0195dc9816
-  - enabled: 1
-    path: Assets/1.Scene/StuartScene.unity
-    guid: f2ab6b1026af6af4a9a567c194118233
-  - enabled: 1
-    path: Assets/1.Scene/Sim/Kevin.unity
-    guid: f2d6a2c374c8cbd4c90da572b0733834
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

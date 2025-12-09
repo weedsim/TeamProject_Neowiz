@@ -24,13 +24,12 @@ public class Item : MonoBehaviour
     }
     private void Update()
     {
-        transform.Rotate(Vector3.up * 90 * Time.deltaTime); //ȸ��ȸ����~
+        transform.Rotate(Vector3.up * 90 * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //�Ծ��� �� ȿ���ߵ��̶� �ݳ�
            
             EatEffect(other.gameObject);
 
@@ -47,11 +46,10 @@ public class Item : MonoBehaviour
 
         else if (type == ItemType.Tissue)
         {
-            //ȭ�� �ϳ��� �����
             DDongInEye clean = FindAnyObjectByType<DDongInEye>();
             if (clean != null)
             {
-                Debug.Log("�� �۰��ڽɴ�~");
+                Debug.Log("Screen Clear");
                 clean.CleanScreen();
             }
             

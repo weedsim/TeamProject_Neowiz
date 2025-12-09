@@ -35,11 +35,11 @@ public class OptionPopup : MonoBehaviour
     {
         popupPanel.SetActive(false);
     }
-    public void BGMChanger(float sound)
+    public void BGMChanger()
     {
         if(bgmPlayer != null)
         {
-            bgmPlayer.volume = sound;
+            bgmPlayer.volume = bgmSlider.value;
         }
     }
     public void CuteModeSetting()
