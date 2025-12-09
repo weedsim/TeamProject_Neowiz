@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class DDongInEye : MonoBehaviour
 {
+    [Header("19 Mode")]
     public GameObject poopUIPrefab;
+
+    [Header("Cute Mode")]
+    public GameObject _PoopCuteUI_Prefab;
+
     public Transform canvasTransform;
 
-    [Header("���ΰ� �ƴѰ�")]
+    [Header("Canvas에 묻는 이미지")]
     public bool isCute = false;
     public Sprite realPoop;
     public Sprite cutePoop;
@@ -17,10 +22,18 @@ public class DDongInEye : MonoBehaviour
 
     public void AddPoop()
     {
-        GameObject stain = Instantiate(poopUIPrefab, canvasTransform);
+        GameObject stain;
+        if (!GameManager.Instance._IsCute)
+        {
+            stain = Instantiate(poopUIPrefab, canvasTransform);
+        }
+        else
+        {
+            stain = Instantiate(_PoopCuteUI_Prefab, canvasTransform);
+        }
 
-        Image imgChange = stain.GetComponent<Image>(); // ���ΰ� �ƴѰ�!
-        if (isCute == true)
+        Image imgChange = stain.GetComponent<Image>();
+        if (GameManager.Instance._IsCute)
         {
             imgChange.sprite = cutePoop;
         }
@@ -28,7 +41,7 @@ public class DDongInEye : MonoBehaviour
         {
             imgChange.sprite = realPoop;
         }
-        //ȭ�鿡�� �����ϰ� ����
+        
         float x = Random.Range(-900f, 900f);
         float y = Random.Range(-500f, 500f);
         stain.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
@@ -41,12 +54,11 @@ public class DDongInEye : MonoBehaviour
     {
         isCute = isOn;
     }
-    //���������� ����� �� �߰��ؾߵ�
+    
     public void CleanScreen()
     {
         if (stain_List.Count > 0)
         {
-            //�� ����Ʈ ���������� �ϴ� �� ����ȭ �����̶��ϴ�
             int lastIndex = stain_List.Count - 1;
             GameObject targetPoop = stain_List[lastIndex];
 

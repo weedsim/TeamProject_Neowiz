@@ -12,10 +12,9 @@ public class ItemSpawner : MonoBehaviour
     private IObjectPool<GameObject> _iPool_Sweet;
     private IObjectPool<GameObject> _iPool_Tissue;
     private float timer;
-    //��ųʸ� ���� 1���� ������
+    
     private void Awake()
     {
-        // 
 
         iPool = new ObjectPool<GameObject>(createFunc: () => { GameObject item = Instantiate(itemPrefab);
             item.GetComponent<Item>().Setup(iPool);
@@ -44,7 +43,7 @@ public class ItemSpawner : MonoBehaviour
         actionOnDestroy: (item) => Destroy(item), maxSize: 20);
 
 
-    }//�ϴ� ����Ƽ Ǯ �̿��غ����� ���µ� �� ��Ʊ���
+    }
 
     private void Start()
     {
@@ -54,7 +53,7 @@ public class ItemSpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 5f) //���� �ʽð�
+        if(timer > 5f)
         {
             timer = 0;
             SpawnItem();
@@ -63,26 +62,30 @@ public class ItemSpawner : MonoBehaviour
     private void SpawnItem()
     {
 
-        int random_int = Random.Range(0, 1);
+        int random_int = Random.Range(0, 2);
+        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);
 
         switch (random_int)
         {
             case 0:
+                GameObject sweetPhtoato = _iPool_Sweet.Get();
+
+                sweetPhtoato.transform.position = randomPos;
 
                 break;
 
             case 1:
+                GameObject tissue = _iPool_Tissue.Get();
+
+                tissue.transform.position = randomPos;
 
                 break;
 
             default:
+                GameObject item = iPool.Get();
 
+                item.transform.position = randomPos;
                 break;
         }
-
-        GameObject item = iPool.Get();
-
-        Vector3 randomPos = player.position + (Random.insideUnitSphere * 20f);//�ֺ����� ����
-        item.transform.position = randomPos;
     }
 }

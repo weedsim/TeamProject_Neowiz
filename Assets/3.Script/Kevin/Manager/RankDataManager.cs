@@ -67,6 +67,11 @@ public class RankDataManager : MonoBehaviour
 
         // 랭킹 데이터 등록했으니 json 파일에 저장
         JSONDataLoader.SaveRankData(_rankDatas);
+
+        // 초기화
+        GameManager.Instance._Time = 0;
+        GameManager.Instance._IsGameOver = false;
+
     }
 
     /// <summary>

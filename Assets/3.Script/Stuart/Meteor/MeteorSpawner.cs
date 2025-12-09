@@ -9,11 +9,20 @@ public class MeteorSpawner : MonoBehaviour
 
     private float timeSpawn;
 
+    private void Start()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+    }
+
     private void Update()
     {
+
         timeSpawn += Time.deltaTime;
 
-        if(timeSpawn >= 0.1f)
+        if(timeSpawn >= 2f)
         {
             timeSpawn = 0f;
             SpawnMeteor();
@@ -21,12 +30,12 @@ public class MeteorSpawner : MonoBehaviour
     }
     private void SpawnMeteor()
     {
-        GameObject meteor = poolManager.GetMeteor(); // ������
+        GameObject meteor = poolManager.GetMeteor();
 
         Vector3 spawnPos = player.position + (Random.onUnitSphere * 30f); //onUnitSphere = �� ǥ�鿡�� ���� ����
 
         meteor.transform.position = spawnPos;
-        meteor.transform.LookAt(player); //�÷��̾� ����
+        meteor.transform.LookAt(player);
         meteor.GetComponent<Meteor>().SetPool(poolManager, player);
     }
 

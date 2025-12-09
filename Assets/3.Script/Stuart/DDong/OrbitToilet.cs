@@ -12,6 +12,11 @@ public class OrbitToilet : MonoBehaviour
 
     private float shootTimer;
 
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Update()
     {
         if (target == null)

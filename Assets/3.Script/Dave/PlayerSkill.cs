@@ -49,7 +49,6 @@ public class PlayerSkill : MonoBehaviour
         }
         _uiManager.StartCoroutine(_uiManager.UpdateSkillColl_Co());
 
-        // ����Ʈ ���� ��ȣ ������
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillStart();
@@ -58,7 +57,6 @@ public class PlayerSkill : MonoBehaviour
         yield return Coooltime;
         isSkill = false;
 
-        // ����Ʈ ���� ��ȣ ������
         if (effectManager != null && GameManager.Instance != null)
         {
             effectManager.OnSkillEnd();

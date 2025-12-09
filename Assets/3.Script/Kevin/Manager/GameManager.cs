@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public string _StartTime;
 
     [Header("혐인가 아닌가")]
-    public bool _IsCute = true;
+    public bool _IsCute = false;
 
     [Header("Choosen Character Name")]
     public string _ChooseCharacter;

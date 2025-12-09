@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DDongInEye
   poopUIPrefab: {fileID: 7678604133275609602, guid: 8311d1ef842e4574db868bd260ab929a, type: 3}
+  _PoopCuteUI_Prefab: {fileID: 7678604133275609602, guid: ca9a45383084fab4b91060e60cbba34c, type: 3}
   canvasTransform: {fileID: 6915949300767998859}
   isCute: 0
   realPoop: {fileID: 21300000, guid: 6d2cacd9d56e1dc40b87ac058222ca39, type: 3}
-  cutePoop: {fileID: 21300000, guid: 1882dbed45dbfea47a24cd95934743ea, type: 3}
+  cutePoop: {fileID: 21300000, guid: 7d427b9153a34e54bb51d9e1032f0465, type: 3}

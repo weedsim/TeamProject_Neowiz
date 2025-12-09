@@ -49,11 +49,10 @@ public class Item : MonoBehaviour
         {
             //ȭ�� �ϳ��� �����
             DDongInEye clean = FindAnyObjectByType<DDongInEye>();
-            if(clean != null)
+            if (clean != null)
             {
-            Debug.Log("�� �۰��ڽɴ�~");
-            clean.CleanScreen();
-
+                Debug.Log("�� �۰��ڽɴ�~");
+                clean.CleanScreen();
             }
             
         }

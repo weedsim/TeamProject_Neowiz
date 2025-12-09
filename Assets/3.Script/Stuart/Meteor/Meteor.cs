@@ -23,7 +23,7 @@ public class Meteor : MonoBehaviour
         if(player != null)
         {
             float distance = Vector3.Distance(transform.position, player.position);
-            if (distance > 50f) // �Ÿ��� ���� �̻� �־�����
+            if (distance > 50f)
             {
                 ReturnPool();
             }
