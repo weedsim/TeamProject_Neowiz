@@ -451,6 +451,10 @@ MonoBehaviour:
   FartRegenSpeed: 1
   FartRegenGauge: 2
   fartEffect: {fileID: 0}
+  farting: 0
+  targetDirection: {x: 0, y: 0, z: 0}
+  isBoosting: 0
+  isFilling: 0
   girlSkillUI: {fileID: 0}
 --- !u!54 &91641011
 Rigidbody:
@@ -736,6 +740,10 @@ MonoBehaviour:
   FartRegenSpeed: 1
   FartRegenGauge: 2
   fartEffect: {fileID: 0}
+  farting: 0
+  targetDirection: {x: 0, y: 0, z: 0}
+  isBoosting: 0
+  isFilling: 0
   girlSkillUI: {fileID: 470143534}
 --- !u!114 &204943987
 MonoBehaviour:
@@ -762,6 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2592d08b9c21734dafabe75fa936cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkill
+  GilrSkill: 0
   effectManager: {fileID: 204943987}
 --- !u!54 &204943989
 Rigidbody:
