@@ -89,6 +89,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
+--- !u!198 &6833385391480726755 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
+  m_PrefabInstance: {fileID: 6833385391498951459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6833385391499076003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
@@ -289,7 +294,7 @@ MonoBehaviour:
   FartCost: 20
   FartRegenSpeed: 1
   FartRegenGauge: 2
-  fartEffect: {fileID: 19800000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
+  fartEffect: {fileID: 6833385391480726755}
   farting: 0
   targetDirection: {x: 0, y: 0, z: 0}
   _layerToDie:
