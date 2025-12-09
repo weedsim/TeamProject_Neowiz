@@ -29,6 +29,7 @@ public class SkillEffectManager : MonoBehaviour
 
         if (overlay != null)
             overlay.alpha = 0;
+        StopCoroutine(OverlayEffect());
     }
 
     // =============================

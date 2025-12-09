@@ -12,14 +12,22 @@ public class PlayerSkill : MonoBehaviour
     private GameManager gameManager = GameManager.Instance;
     private UIManager _uiManager = null;
     
+    [Header("소리")]
+    public AudioClip boyClip;
+    public AudioClip gilrClip;
+    public AudioClip GoClip;
+    public AudioSource audioSource;
+
 
     private void Awake()
     {
         TryGetComponent(out addForce);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void GoSkill()
     {
+        audioSource.PlayOneShot(GoClip);
         int GoSkillNum = Random.Range(1, 4);
 
         switch (GoSkillNum)
@@ -37,7 +45,7 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    public SkillEffectManager effectManager; // 
+    public SkillEffectManager effectManager; 
 
     private IEnumerator CoolTime_co()
     {
@@ -49,34 +57,40 @@ public class PlayerSkill : MonoBehaviour
         }
         _uiManager.StartCoroutine(_uiManager.UpdateSkillColl_Co());
 
-        // ����Ʈ ���� ��ȣ ������
-        if (effectManager != null && GameManager.Instance != null)
-        {
-            effectManager.OnSkillStart();
-        }           
-
         yield return Coooltime;
         isSkill = false;
-
-        // ����Ʈ ���� ��ȣ ������
-        if (effectManager != null && GameManager.Instance != null)
-        {
-            effectManager.OnSkillEnd();
-        }
             
     }
 
     private IEnumerator BoySkill_co()
     {
+        audioSource.PlayOneShot(boyClip);
+        if (effectManager != null && GameManager.Instance != null)
+        {
+            effectManager.OnSkillStart();
+        }
         addForce.FartCost = 0f;
         yield return BoySkilltime;
+        if (effectManager != null && GameManager.Instance != null)
+        {
+            effectManager.OnSkillEnd();
+        }
         addForce.FartCost = 20f;
     }
 
     private IEnumerator GirlSkill_co()
     {
+        audioSource.PlayOneShot(gilrClip);
+        if (effectManager != null && GameManager.Instance != null)
+        {
+            effectManager.OnSkillStart();
+        }
         GilrSkill = true;
         yield return GilrSkilltime;
+        if (effectManager != null && GameManager.Instance != null)
+        {
+            effectManager.OnSkillEnd();
+        }
         GilrSkill = false;
     }
 
