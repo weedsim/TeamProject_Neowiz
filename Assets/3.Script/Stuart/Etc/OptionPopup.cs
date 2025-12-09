@@ -42,11 +42,8 @@ public class OptionPopup : MonoBehaviour
             bgmPlayer.volume = sound;
         }
     }
-    public void CuteModeSetting(bool isOn)
+    public void CuteModeSetting()
     {
-        if(ddong != null)
-        {
-            ddong.CheckCute(isOn);
-        }
+        GameManager.Instance._IsCute = !transform.GetChild(1).GetComponent<Toggle>().isOn;
     }
 }
