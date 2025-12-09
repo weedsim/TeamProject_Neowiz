@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
     {
         if (type == ItemType.sweetPotato)
         {
-            addForce.CurrentGauge += 50;
+            player.GetComponent<AddForce>().CurrentGauge += 50;
         }
 
         else if (type == ItemType.Tissue)
