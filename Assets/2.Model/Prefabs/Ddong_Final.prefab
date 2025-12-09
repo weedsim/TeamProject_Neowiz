@@ -118,7 +118,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04, y: -0.021, z: 2.109}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5489005571692435961}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c0711a3a741224b83a5e6a663cadf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyPoop
-  speed: 10
+  speed: 20
 --- !u!54 &3377731589629476786
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class OrbitToilet : MonoBehaviour
     public Transform target;
     public GameObject poopPrefab;
     public float rotateSpeed =10f;
-    public float shootInterval = 2f;
+    public float shootInterval = 1f;
 
     private float shootTimer;
 

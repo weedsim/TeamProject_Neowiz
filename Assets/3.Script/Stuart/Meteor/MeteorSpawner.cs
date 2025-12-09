@@ -22,7 +22,7 @@ public class MeteorSpawner : MonoBehaviour
 
         timeSpawn += Time.deltaTime;
 
-        if(timeSpawn >= 2f)
+        if(timeSpawn >= 1f)
         {
             timeSpawn = 0f;
             SpawnMeteor();
@@ -32,7 +32,7 @@ public class MeteorSpawner : MonoBehaviour
     {
         GameObject meteor = poolManager.GetMeteor();
 
-        Vector3 spawnPos = player.position + (Random.onUnitSphere * 30f); //onUnitSphere = �� ǥ�鿡�� ���� ����
+        Vector3 spawnPos = player.position + (Random.onUnitSphere * 100f); //onUnitSphere = �� ǥ�鿡�� ���� ����
 
         meteor.transform.position = spawnPos;
         meteor.transform.LookAt(player);

@@ -16,7 +16,7 @@ public class FlyPoop : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if (target != null && Vector3.Distance(transform.position, target.position) > 30f)
+        if (target != null && Vector3.Distance(transform.position, target.position) > 100f)
         {
             Destroy(gameObject);
         }
