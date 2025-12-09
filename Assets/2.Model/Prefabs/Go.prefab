@@ -303,6 +303,8 @@ MonoBehaviour:
   isBoosting: 0
   isFilling: 0
   girlSkillUI: {fileID: 0}
+  audioSource: {fileID: 0}
+  FartClip: {fileID: 8300000, guid: 5bddcc0eaf8b19f45bea9ebe348eb35b, type: 3}
 --- !u!114 &7945350793377306812
 MonoBehaviour:
   m_ObjectHideFlags: 0

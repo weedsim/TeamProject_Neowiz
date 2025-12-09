@@ -26,9 +26,15 @@ public class AddForce : MonoBehaviour
 
     public SkillCooldownUI girlSkillUI;//스킬쿨타임
 
+    [Header("소리")]
+    public AudioSource audioSource;
+    public AudioClip FartClip;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = FartClip;
         //OnGirlSkill();
     }
 
@@ -54,7 +60,8 @@ public class AddForce : MonoBehaviour
 
             if(fartEffect != null)
             {
-                fartEffect.Play(); 
+                fartEffect.Play();
+                audioSource.PlayOneShot(FartClip);
             }
 
             StartCoroutine(Boostfarting_co());
@@ -70,20 +77,20 @@ public class AddForce : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(transform.position.x > 1600 || transform.position.x < -1600)
-        {
-            transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
-        }
+        //if(transform.position.x > 1600 || transform.position.x < -1600)
+        //{
+        //    transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
+        //}
 
-        if (transform.position.y > 1600 || transform.position.y < -1600)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
-        }
+        //if (transform.position.y > 1600 || transform.position.y < -1600)
+        //{
+        //    transform.position = new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
+        //}
 
-        if (transform.position.z > 1600 || transform.position.z < -1600)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * -1);
-        }
+        //if (transform.position.z > 1600 || transform.position.z < -1600)
+        //{
+        //    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * -1);
+        //}
 
         if (farting)
         {

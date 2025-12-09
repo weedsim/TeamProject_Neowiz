@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
         {
             // 초기화 
             CheckStartTime();
+            GameManager.Instance.ResetGame();
             GameObject playerOBJ;
             switch (GameManager.Instance._ChooseCharacter)
             {
@@ -196,10 +197,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 비디오 실행 메서드
+    /// </summary>
     public void TurnonVideo()
     {
+        Camera.main.gameObject.GetComponent<AudioSource>().volume = 0;
+
         _VideoPlayer.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+
+        GameManager.Instance.ResetGame();
 
         StartCoroutine(LoadingAsync("MainGame"));
     }
@@ -223,6 +230,8 @@ public class UIManager : MonoBehaviour
                 if (videoPlayer.isPaused)
                 {
                     CheckStartTime();
+
+                    GameManager.Instance.ResetGame();
 
                     asyncOperation.allowSceneActivation = true;
                 }
@@ -254,9 +263,6 @@ public class UIManager : MonoBehaviour
     public void EnterPlayerName()
     {
         GameManager.Instance.EnterPlayerName(_GameOver_Canvas.GetComponentInChildren<InputField>().text);
-
-
-        GameManager.Instance._Time = 0f;
     }
 
     /// <summary>
@@ -273,6 +279,12 @@ public class UIManager : MonoBehaviour
     public void OnRankingUI()
     {
 
+    }
+
+
+    public void OnSkip()
+    {
+        _VideoPlayer.GetComponent<UnityEngine.Video.VideoPlayer>().Pause();
     }
 
 

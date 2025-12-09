@@ -50,25 +50,27 @@ public class PlayerSkill : MonoBehaviour
     private IEnumerator CoolTime_co()
     {
         isSkill = true;
-        
-        if(_uiManager == null)
-        {
-            GameObject.Find("UIManager").TryGetComponent(out _uiManager);
-        }
-        _uiManager.StartCoroutine(_uiManager.UpdateSkillColl_Co());
 
-        if (effectManager != null && GameManager.Instance != null)
-        {
-            effectManager.OnSkillStart();
-        }           
+        GameManager.Instance._TargetEffect.StartCoroutine(GameManager.Instance._TargetEffect.UpdateSkillColl_Co());
+        
+        //if(_uiManager == null)
+        //{
+        //    GameObject.Find("UIManager").TryGetComponent(out _uiManager);
+        //}
+        //_uiManager.StartCoroutine(_uiManager.UpdateSkillColl_Co());
+
+        //if (effectManager != null && GameManager.Instance != null)
+        //{
+        //    effectManager.OnSkillStart();
+        //}           
 
         yield return Coooltime;
         isSkill = false;
 
-        if (effectManager != null && GameManager.Instance != null)
-        {
-            effectManager.OnSkillEnd();
-        }
+        //if (effectManager != null && GameManager.Instance != null)
+        //{
+        //    effectManager.OnSkillEnd();
+        //}
             
     }
 

@@ -92,4 +92,11 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void ResetGame()
+    {
+        _Time = 0;
+        _IsGameOver = false;
+        Time.timeScale = 1f;
+    }
+
 }
