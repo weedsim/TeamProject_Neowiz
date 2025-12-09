@@ -23,13 +23,13 @@ public class DDongInEye : MonoBehaviour
     public void AddPoop()
     {
         GameObject stain;
-        if (!GameManager.Instance._IsCute)
+        if (GameManager.Instance._IsCute)
         {
-            stain = Instantiate(poopUIPrefab, canvasTransform);
+            stain = Instantiate(_PoopCuteUI_Prefab, canvasTransform);
         }
         else
         {
-            stain = Instantiate(_PoopCuteUI_Prefab, canvasTransform);
+            stain = Instantiate(poopUIPrefab, canvasTransform);
         }
 
         Image imgChange = stain.GetComponent<Image>();

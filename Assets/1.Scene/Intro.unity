@@ -5785,7 +5785,7 @@ MonoBehaviour:
   _TargetEffect: {fileID: 0}
   _Time: 0
   _StartTime: 
-  _IsCute: 1
+  _IsCute: 0
   _ChooseCharacter: 
   _IsGameOver: 0
 --- !u!114 &8521237829967734901
