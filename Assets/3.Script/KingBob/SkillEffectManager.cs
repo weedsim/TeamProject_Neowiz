@@ -51,6 +51,6 @@ public class SkillEffectManager : MonoBehaviour
 
     private void Start()
     {
-        OnSkillStart();
+        //OnSkillStart();
     }
 }

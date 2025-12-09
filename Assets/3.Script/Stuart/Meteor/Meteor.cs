@@ -44,11 +44,11 @@ public class Meteor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (playerSkill.GilrSkill) return;
+            if (other.GetComponent<PlayerSkill>().GilrSkill) return;
 
             if (GameManager.Instance != null)
             {
-                //  GameManager.Instance.GameOver();
+                GameManager.Instance.GameOver();
             }
             ReturnPool();
         }
