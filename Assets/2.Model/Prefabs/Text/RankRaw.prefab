@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingUI
   rankText: {fileID: 794663716391571812}
-  nameText: {fileID: 0}
+  nameText: {fileID: 4897249558479720452}
   scoreText: {fileID: 847896225497064852}
   timeText: {fileID: 3823556198754200598}
 --- !u!1 &2482259378555080338
