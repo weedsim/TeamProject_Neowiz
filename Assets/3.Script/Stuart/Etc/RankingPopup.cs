@@ -16,7 +16,7 @@ public class RankingPopup : MonoBehaviour
     {
 
         popupPanel.SetActive(true);
-        List<RankData> data = new List<RankData>();
+        List<RankData> data = RankDataManager.Instance.GetRankList();
         ShowRank(data);
     }
     public void ClosePopup()
@@ -32,7 +32,11 @@ public class RankingPopup : MonoBehaviour
 
     private void ShowRank(List<RankData> dataList)
     {
-        
+        foreach(Transform chid in content)
+        {
+            Destroy(chid.gameObject);
+        }
+
         for(int i = 0; i<dataList.Count; i++)
         {
             GameObject row = Instantiate(rankUIPrefab, content);
